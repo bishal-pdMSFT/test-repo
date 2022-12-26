@@ -8,7 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest]
     name: runner-cache upload (${{ matrix.os }})
     steps:
     - uses: actions/checkout@v3
@@ -17,9 +17,7 @@ jobs:
       run: |
         mkdir test-cache
         echo "foo" > test-cache/test.txt
-        if [$RUNNER_OS != 'win32']; then ln -s test-cache/test.txt test-cache/link.txt;
-      env: 
-        RUNNER_OS: ${{ runner.os }}
+        ln -s test-cache/test.txt test-cache/link.txt
     - uses: actions/cache@v3
       with:
         path: test-cache
@@ -30,7 +28,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        key: [ubuntu-latest, windows-latest, macos-latest]
+        key: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     name: runner-cache restore (${{ matrix.os }}) with key (${{ matrix.key }})
     steps:
