@@ -17,6 +17,7 @@ jobs:
       run: |
         mkdir test-cache
         echo "foo" > test-cache/test.txt
+        ln -s test-cache/test.txt test-cache/link.txt
     - uses: actions/cache@v3.1.0-beta
       with:
         path: test-cache
