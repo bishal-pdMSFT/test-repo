@@ -17,7 +17,9 @@ jobs:
       run: |
         mkdir test-cache
         echo "foo" > test-cache/test.txt
-        ln -s test-cache/test.txt test-cache/link.txt
+        if [$RUNNER_OS != 'win32']; then ln -s test-cache/test.txt test-cache/link.txt;
+      env: 
+        RUNNER_OS: ${{ runner.os }}
     - uses: actions/cache@v3
       with:
         path: test-cache
