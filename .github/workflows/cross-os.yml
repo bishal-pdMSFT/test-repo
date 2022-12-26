@@ -8,7 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest]
     name: runner-cache upload (${{ matrix.os }})
     steps:
     - uses: actions/checkout@v3
@@ -33,11 +33,15 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        key: [ubuntu-latest, windows-latest, macos-latest]
+        key: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     name: runner-cache restore (${{ matrix.os }}) with key (${{ matrix.key }})
     steps:
     - uses: actions/checkout@v3
+    - if: ${{ runner.os == 'Windows' }}
+      shell: bash
+      run: |
+        rm "C:\Program Files\Git\usr\bin\tar.exe"
     - uses: actions/cache@v3
       id: cache
       with:
