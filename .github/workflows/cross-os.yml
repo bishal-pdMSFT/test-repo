@@ -21,7 +21,6 @@ jobs:
       shell: bash
       run: ln -s test-cache/test.txt test-cache/link.txt
     - if: ${{ runner.os == 'Windows' }}
-      shell: bash
       run: mklink test-cache/link.txt test-cache/test.txt
     - uses: actions/cache@v3
       with:
