@@ -57,6 +57,10 @@ jobs:
         ls
         "C:\Program Files\Git\usr\bin\tar.exe" -xf cache.tzst -P --force-local --use-compress-program "zstd -d" # should not fail
         du -sh test-cache
+        git clone https://github.com/telescopejs/telescope.git
+        cd telescope
+        cp -r ../test-cache/node_modules/ .
+        npm list
         ls -la test-cache/
         rm -rf test-cache
       env:
