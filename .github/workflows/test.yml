@@ -46,7 +46,7 @@ jobs:
       #env:
       #  MSYS: winsymlinks:nativestrict
 
-    - shell: bash
+    - shell: C:\Windows\System32\bash.exe
       run: |
         which bash
         ls
