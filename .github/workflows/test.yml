@@ -22,7 +22,7 @@ jobs:
         cd telescope
         npm install
         du -sh node_modules
-        cp -r node_modules/ ../test-cache/tmp1/
+        cp -r node_modules/ ../test-cache/
         cd ..
         tar --posix -cf cache.tzst --exclude cache.tzst -P test-cache --use-compress-program zstdmt
     - uses: actions/upload-artifact@v3
