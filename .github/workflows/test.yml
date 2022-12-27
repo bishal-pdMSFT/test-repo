@@ -49,7 +49,8 @@ jobs:
     - shell: bash
       run: |
         ls
-        "C:\Windows\System32\bash.exe" -c '"C:\Program Files\Git\usr\bin\tar.exe" -xf cache.tzst -P --force-local --use-compress-program "zstd -d"' # should fail
+        "C:\Program Files\Git\usr\bin\tar.exe" -xf cache.tzst -P --force-local --use-compress-program "zstd -d" # should not fail
         ls -la test-cache/
         rm -rf test-cache
-        
+      env:
+        MSYS: winsymlinks:nativestrict
