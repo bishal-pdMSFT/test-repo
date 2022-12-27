@@ -49,7 +49,7 @@ jobs:
     - shell: bash
       run: |
         ls
-        "C:\Program Files\Git\usr\bin\tar.exe" -xf cache.tzst -P --force-local --use-compress-program "zstd -d --force" # should not fail
+        "C:\Program Files\Git\usr\bin\tar.exe" -xf cache.tzst -P --force-local --dereference --use-compress-program "zstd -d" # should not fail
         ls test-cache/
         rm -rf test-cache
         
