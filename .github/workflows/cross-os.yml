@@ -41,14 +41,14 @@ jobs:
     - if: ${{ runner.os == 'Windows' }}
       shell: bash
       run: |
-        export MSYS=winsymlinks:native
+        export MSYS=winsymlinks:nativestrict
     - uses: actions/cache@v3
       id: cache
       with:
         path: test-cache
         key: ${{ matrix.key }}-runner-${{ github.run_number }}-${{ github.run_attempt }}
       env:
-        MSYS: winsymlinks:native
+        MSYS: winsymlinks:nativestrict
 
     - run: |
         ls test-cache/
