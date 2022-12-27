@@ -29,7 +29,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest]
-        key: [ubuntu-latest, macos-latest]
+        key: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     name: runner-cache restore (${{ matrix.os }}) with key (${{ matrix.key }})
     steps:
