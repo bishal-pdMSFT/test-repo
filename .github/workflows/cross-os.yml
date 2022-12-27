@@ -52,6 +52,7 @@ jobs:
 
     - run: |
         cat test-cache/link.txt
+        ls test-cache/
 
     - name: Fail if cache not found
       if: steps.cache.outputs.cache-hit != 'true'
