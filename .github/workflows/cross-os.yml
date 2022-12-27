@@ -42,18 +42,20 @@ jobs:
       shell: bash
       run: |
         #export MSYS=winsymlinks:nativestrict
-        rm "C:\Program Files\Git\usr\bin\tar.exe"
+        #rm "C:\Program Files\Git\usr\bin\tar.exe"
     - uses: actions/cache@v3
       id: cache
       with:
         path: test-cache
         key: ${{ matrix.key }}-runner-${{ github.run_number }}-${{ github.run_attempt }}
-      #env:
-      #  MSYS: winsymlinks:nativestrict
+      env:
+        MSYS: winsymlinks:nativestrict
 
     - run: |
         ls test-cache/
-        cat test-cache/link.txt
+        rm test-cache
+        #cat test-cache/link.txt
+        
 
     - name: Fail if cache not found
       if: steps.cache.outputs.cache-hit != 'true'
