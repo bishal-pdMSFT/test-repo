@@ -18,6 +18,7 @@ jobs:
         mkdir test-cache
         echo "foo" > test-cache/test.txt
         ln -s test-cache/test.txt test-cache/link.txt
+        ls test-cache
         tar --posix -cf cache.tzst --exclude cache.tzst -P test-cache --use-compress-program zstdmt
         tar -tf cache.tzst -P --use-compress-program zstdmt
     - uses: actions/upload-artifact@v3
