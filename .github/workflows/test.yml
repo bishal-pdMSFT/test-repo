@@ -17,13 +17,7 @@ jobs:
       run: |
         mkdir test-cache
         echo "foo" > test-cache/test.txt
-        ln -s ./test.txt test-cache/link.txt
-        git clone https://github.com/telescopejs/telescope.git
-        cd telescope
-        npm install
-        du -sh node_modules
-        cp -r node_modules/ ../test-cache/
-        cd ..
+        ln -s test-cache/test.txt test-cache/link.txt
         tar --posix -cf cache.tzst --exclude cache.tzst -P test-cache --use-compress-program zstdmt
     - uses: actions/upload-artifact@v3
       with:
@@ -57,11 +51,7 @@ jobs:
         ls
         "C:\Program Files\Git\usr\bin\tar.exe" -xf cache.tzst -P --force-local --use-compress-program "zstd -d" # should not fail
         du -sh test-cache
-        git clone https://github.com/telescopejs/telescope.git
-        cd telescope
-        cp -r ../test-cache/node_modules/ .
-        npm list
         ls -la test-cache/
         rm -rf test-cache
-      env:
-        MSYS: winsymlinks:nativestrict
+      #env:
+      #  MSYS: winsymlinks:nativestrict
