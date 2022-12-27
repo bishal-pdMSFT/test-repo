@@ -48,9 +48,8 @@ jobs:
 
     - shell: bash
       run: |
-        which bash
         ls
-        C:\Windows\System32\bash.exe -c '"C:\Program Files\Git\usr\bin\tar.exe" -xf cache.tzst -P --force-local --use-compress-program "zstd -d"' # should fail
+        "C:\Windows\System32\bash.exe" -c '"C:\Program Files\Git\usr\bin\tar.exe" -xf cache.tzst -P --force-local --use-compress-program "zstd -d"' # should fail
         ls -la test-cache/
         rm -rf test-cache
         
