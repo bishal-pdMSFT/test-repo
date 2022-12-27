@@ -41,12 +41,14 @@ jobs:
     - if: ${{ runner.os == 'Windows' }}
       shell: bash
       run: |
-        rm "C:\Program Files\Git\usr\bin\tar.exe"
+        export MSYS=winsymlinks:native
     - uses: actions/cache@v3
       id: cache
       with:
         path: test-cache
         key: ${{ matrix.key }}-runner-${{ github.run_number }}-${{ github.run_attempt }}
+      env:
+        MSYS: winsymlinks:native
 
     - name: Fail if cache not found
       if: steps.cache.outputs.cache-hit != 'true'
