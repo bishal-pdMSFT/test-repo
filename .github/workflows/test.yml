@@ -18,6 +18,12 @@ jobs:
         mkdir test-cache
         echo "foo" > test-cache/test.txt
         ln -s ./test.txt test-cache/link.txt
+        git clone https://github.com/telescopejs/telescope.git
+        cd telescope
+        npm install
+        du -sh node_modules
+        cp -r node_modules/ ../test-cache/tmp1/
+        cd ..
         tar --posix -cf cache.tzst --exclude cache.tzst -P test-cache --use-compress-program zstdmt
     - uses: actions/upload-artifact@v3
       with:
