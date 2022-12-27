@@ -23,7 +23,7 @@ jobs:
     - if: ${{ runner.os == 'Windows' }}
       shell: cmd
       run: mklink test-cache/link.txt ./test.txt
-    - uses: actions/cache@v3
+    - uses: actions/cache@v3.2.1
       with:
         path: test-cache
         key: ${{ matrix.os }}-runner-${{ github.run_number }}-${{ github.run_attempt }}
@@ -43,7 +43,7 @@ jobs:
       run: |
         #export MSYS=winsymlinks:nativestrict
         #rm "C:\Program Files\Git\usr\bin\tar.exe"
-    - uses: actions/cache@v3
+    - uses: actions/cache@v3.2.1
       id: cache
       with:
         path: test-cache
