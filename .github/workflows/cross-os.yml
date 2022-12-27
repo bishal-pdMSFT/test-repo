@@ -53,7 +53,9 @@ jobs:
 
     - run: |
         ls test-cache/
-        rm test-cache
+        rmdir test-cache
+        ls
+        "C:\Program Files\Git\usr\bin\tar.exe" -tf cache.tzst -P --force-local --use-compress-program "zstd -d" # should fail
         #cat test-cache/link.txt
         
 
