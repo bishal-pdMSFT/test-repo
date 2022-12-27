@@ -51,8 +51,7 @@ jobs:
         MSYS: winsymlinks:native
 
     - run: |
-        ls -la test-cache/
-        cat test-cache/*
+        cat test-cache/link.txt
 
     - name: Fail if cache not found
       if: steps.cache.outputs.cache-hit != 'true'
