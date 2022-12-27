@@ -51,7 +51,7 @@ jobs:
         MSYS: winsymlinks:native
 
     - run: |
-        ls test-cache/
+        ls -la test-cache/
         cat test-cache/*
 
     - name: Fail if cache not found
